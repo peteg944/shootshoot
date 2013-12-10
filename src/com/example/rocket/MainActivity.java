@@ -16,36 +16,26 @@ import android.widget.RadioGroup;
 
 public class MainActivity extends Activity {
 	
-	MediaPlayer player;
-	IntroSound intro;
-	RadioGroup rGroup;
-	int speed = 1;
-	boolean densmore = false;
+	MediaPlayer player; // used to play the introduction audio
+	IntroSound intro; // an instance of AsyncTask that runs the audio in the background
+	RadioGroup rGroup; // group of radio buttons that determine difficulty
+	int speed = 1; // variable passed to GameActivity to set the starting speed of the game
+	boolean densmore = false; // are we in densmore/mystery mode?
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
+		// get the radiogroup from the generated XML file
 		rGroup = (RadioGroup)findViewById(R.id.radioGroup1);
-		/*rGroup.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-
-			@Override
-			public void onCheckedChanged(RadioGroup radioGroup1, int arg1) {
-				if(arg1 == 0 || arg1 == 3)
-					speed = 1;
-				else if(arg1 == 1)
-					speed = 3;
-				else if(arg1 == 2)
-					speed = 6;
-			}
-			
-		});*/
 		
+		// initialize the sound playing/controlling variables 
 		player = new MediaPlayer();
 		intro = new IntroSound();
 		AssetFileDescriptor afd;
 		
+		// open the .m4a file from the assets folder
 		try {
 			afd = getAssets().openFd("Intro.m4a");
 			player.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
@@ -56,8 +46,12 @@ public class MainActivity extends Activity {
 		}
 	}
 	
+	// called whenever a radio button in the difficulty selector
+	// is pressed
 	public void onRadioButtonClicked(View view)
 	{
+		// the "view" passed into this method is actually
+		// a RadioButton instance, so we cast it
 		boolean checked = ((RadioButton)view).isChecked();
 		if(checked)
 		{
@@ -93,11 +87,13 @@ public class MainActivity extends Activity {
 		return true;
 	}
 	
+	// opens up the instructions activity
 	public void showInstructions(View view){
 		Intent intent = new Intent(this, ShowInstructions.class);
 		startActivity(intent);
 	}
 	
+	// opens up the phone's browser to go to the credits html page on people.bu.edu
 	public void showCredits(View view){
 		//Intent intent = new Intent(this, CreditsActivity.class);
 		//startActivity(intent);
@@ -106,12 +102,15 @@ public class MainActivity extends Activity {
 		startActivity(browserIntent);
 	}
 	
+	// start the music, if it is not playing
 	public void playIntro(View v)
 	{
 		if(!player.isPlaying())
 			intro.doInBackground();
 	}
 	
+	// handles the event when the user switches out of the app,
+	// so we pause the audio
 	@Override
 	protected void onPause()
 	{
@@ -121,6 +120,9 @@ public class MainActivity extends Activity {
 			player.pause();
 	}
 	
+	// starts the game by moving to GameActivity, and also
+	// pass a few parameters that determine how the game works
+	// like mystery/densmore mode and starting speed of the game
 	public void startGame(View v)
 	{
 		if(player.isPlaying())
@@ -142,6 +144,9 @@ public class MainActivity extends Activity {
 		startActivity(intent);
 	}
 	
+	// responsible for playing the sound, but in the background,
+	// so the user can navigate away and start the game when they want to
+	// and not have to wait for the sound to stop
 	public class IntroSound extends AsyncTask<Void, Void, Void>
 	{
 		@Override

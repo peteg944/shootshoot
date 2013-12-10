@@ -5,8 +5,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.TextView;
 
 public class LostActivity extends Activity {
@@ -16,24 +14,18 @@ public class LostActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_lost);
 		
+		// retrieve the score from the previous screen (GameActivity)
 		Intent theIntent = getIntent();
 		int score = theIntent.getIntExtra("score", 0);
 		
+		// set the final score text to the retrieved final score
 		TextView scoreText = (TextView)findViewById(R.id.textView1);
 		scoreText.setText("Final Score: " + score);
-		
-	//	Button mymain = (Button)findViewById(R.id.button1);
-		
-		//mymain.setOnClickListener(new OnClickListener() {
-			//	@Override
-				//public void onClick(View v) {
-					
-			//	}
-		// });
 	}
 	
 	public void goToMain(View v)
 	{
+		// goes back to MainActivity (main screen)
 		Intent intent = new Intent(this, MainActivity.class);
 		startActivity(intent);
 	}

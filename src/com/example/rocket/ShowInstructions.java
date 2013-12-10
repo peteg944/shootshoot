@@ -5,7 +5,6 @@ import android.app.Activity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.support.v4.app.NavUtils;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.os.Build;
@@ -37,12 +36,14 @@ public class ShowInstructions extends Activity {
 		return true;
 	}
 	
+	// Also go to the MainActivity if the software back button is pressed (not controlled by our app)
 	@Override
 	public void onBackPressed() {
 	    Intent theIntent = new Intent(this, MainActivity.class);
 	    startActivity(theIntent);
 	}
 	
+	// go to MainActivity if the "Main Menu" button is pressed
 	public void goToMain(View v)
 	{
 		Intent intent = new Intent(this, MainActivity.class);
@@ -60,12 +61,11 @@ public class ShowInstructions extends Activity {
 			//
 			// http://developer.android.com/design/patterns/navigation.html#up-vs-back
 			//
+			
+			// move back to MainActivity if the navigation back button is pressed
 			Intent intent2 = new Intent(this, MainActivity.class);
 			startActivity(intent2);
 		}
 		return true;
 	}
-		//return super.onOptionsItemSelected(item);
-	//}
-
 }
