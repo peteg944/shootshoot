@@ -80,7 +80,12 @@ public class RocketView extends View implements Runnable {
 		shootingSound = new ShootSound();
 		backSound = new BackgroundSound();
 		densmore = false;
-		shipImage = BitmapFactory.decodeResource(getResources(), R.drawable.ship);
+		
+		if(densmore)
+			shipImage = BitmapFactory.decodeResource(getResources(), R.drawable.densmore);
+		else
+			shipImage = BitmapFactory.decodeResource(getResources(), R.drawable.ship);
+		
 		pauseLock = new Object();
 		paused = false;
 		
@@ -266,6 +271,10 @@ public class RocketView extends View implements Runnable {
 	public void setDensmore(boolean d)
 	{
 		densmore = d;
+		if(densmore)
+			shipImage = BitmapFactory.decodeResource(getResources(), R.drawable.densmore);
+		else
+			shipImage = BitmapFactory.decodeResource(getResources(), R.drawable.ship);
 	}
 	
 	public class ShootSound extends AsyncTask<Void, Void, Void>
@@ -297,7 +306,7 @@ public class RocketView extends View implements Runnable {
 			{
 				Random random = new Random();
 				int track = random.nextInt(3);
-				if(densmore)
+				/*if(densmore)
 				{
 					if(track == 0)
 						makeDensmore(leftPosition, -50);
@@ -307,7 +316,7 @@ public class RocketView extends View implements Runnable {
 						makeDensmore(rightPosition, -50);
 				}
 				else
-				{
+				{*/
 					int otherRandomNumber = random.nextInt(4);
 					if(otherRandomNumber <= 2)
 					{
@@ -327,7 +336,7 @@ public class RocketView extends View implements Runnable {
 						else if(track == 2)
 							makeAlien(rightPosition, -50);
 					}
-				}
+				//}
 			}
 			
 			if(bullet != null)
