@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">SHOOT-SHOOT</string>
+    <string name="action_settings">Settings</string>
+    <string name="lost">YOU LOST</string>
+    <string name="title_activity_lost">The game is over&#8230;</string>
+    <string name="title_showinstructions">The Rules</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="instructions">		Instructions:\n
+        \n
+        1: Move the ship using the left and right buttons.\n
+        2: Fire bullets to destroy enemies with the shoot button.\n
+        3: Only one bullet may appear on the screen at a time.\n
+        4: Don\'t let any enemies pass you!\n
+        5: Danger! Enemies move faster over time.</string>
+    <string name="difficulty_easy">Easy</string>
+    <string name="difficulty_medium">Medium</string>
+    <string name="difficulty_hard">Hard</string>
+    <string name="difficulty_title">Difficulty:</string>
+    <string name="difficulty_densmore">Mystery</string>
+    <string name="button_start">Start!</string>
+    <string name="button_credits">Credits</string>
+    <string name="button_instructions">Rules</string>
+    <string name="title_activity_show_instructions">ShowInstructions</string>
+    <string name="title_activity_credits">Credits</string>
+    <string name="credits">Development:
+Peter Goulakos
+Andrei Ivanov
+Zhanna Kaufman
+Mino Thongsavatdy
+Alex Wong
+
+Mentor:
+	Professor Douglas Densmore
+Music and Sounds: 
+Introduction Story:
+	Peter Goulakos
+Background Music:
+BellTron/Harmonium>>1-6, Harmonium of Hecubus 
+-	Created by JimiMod under the Creative Commons 0 License, found at http://www.freesound.org/people/JimiMod/sounds/209974/
+Ship Shooting Sound:
+	LAZER SOUND 	
+-Created by neirbonad1 under the Attribution Noncommercial License, found at http://www.freesound.org/people/neirbonad1/sounds/178055/
+
+Artwork:
+Enemy Ship and Home Ship:
+-Created by Skorpio and Wubitog under CC-BY-SA 3.0 License , found at http://opengameart.org/content/part2artcom-with-skorpios-2nd-kit#comment-form
+Asteroid:
+-Created by Jasper under License CC0, found at 
+http://opengameart.org/content/asteroid-generator-and-a-set-of-generated-asteroids
+Professor Densmore head:
+	http://www.bu.edu/ece/people/faculty/a-g/douglas-densmore/
+</string>
+
+</resources>
